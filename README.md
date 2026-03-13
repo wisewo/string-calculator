@@ -98,3 +98,19 @@ PR 올리기 전에 아래를 확인할 것.
 - [ ] `else` 사용하지 않았는가
 - [ ] `Stream`, `Lambda` 사용하였는가
 - [ ] 메서드 길이 15줄 이하인가
+
+---
+
+## 진행 방법
+1. 위 레포지토리를 fork한다.
+2. **fork한 레포지토리를 본인 로컬에 clone한다.**
+   git clone [https://github.com/본인계정/string-calculator](https://github.com/%EB%B3%B8%EC%9D%B8%EA%B3%84%EC%A0%95/string-calculator)
+3. 본인 이름으로 브랜치 생성
+   git checkout -b 홍길동
+4. StringCalculator.java 포함 클래스를 자유롭게 설계해서 구현한다
+5. 테스트 전체 통과 확인
+   ./gradlew test
+6. PR(Pull Request) 올리기
+    - base: **Konkuk-KUIT/string-calculator(위 레포지토리) main**
+    - PR 제목: [홍길동] 문자열 계산기 구현
+    - PR 본문에 본인이 설계한 클래스 구조 간단히 설명할 것
