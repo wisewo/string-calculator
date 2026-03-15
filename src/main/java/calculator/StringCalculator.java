@@ -9,11 +9,19 @@ import java.util.List;
  */
 public class StringCalculator {
 
+    CalculationHistory history = new CalculationHistory();
+
     public double calculate(String input) {
-        throw new UnsupportedOperationException("구현 필요");
+        InputParser inputParser = new InputParser();
+        Formula formula = inputParser.parse(input);
+        double result =  formula.calculate().value();
+
+        history.add(input);
+
+        return result;
     }
 
     public List<String> getHistory() {
-        throw new UnsupportedOperationException("구현 필요");
+        return history.getFromRecent();
     }
 }
