@@ -21,7 +21,7 @@ public class StringCalculator {
         Operand result =  formula.calculate();
 
         // 3. 이력 저장
-        history.add(input);
+        history.add(String.format("%s = %s", input, result));
 
         // 4. 결과 반환
         return result.value();

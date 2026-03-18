@@ -11,15 +11,18 @@ public class ParsingContext {
     private String delimiter = ",|:";
     private String remainText;
 
-    private static final Pattern operationPatter = Pattern.compile("op=(.+?)\\|");
-    private static final Pattern delimiterPattern = Pattern.compile("//(.+?)\n");
+    private static final Pattern OPERATION_PATTERN = Pattern.compile("op=(.+?)\\|");
+    private static final Pattern DELIMITER_PATTERN = Pattern.compile("//(.+?)\n");
 
     ParsingContext(String input) {
-        this.remainText = (input == null) ? "" : input ;
+        if (input == null)
+            input = "";
+
+        this.remainText = input;
     }
 
     public ParsingContext extractOperation() {
-        Matcher matcher = operationPatter.matcher(remainText);
+        Matcher matcher = OPERATION_PATTERN.matcher(remainText);
 
         if (matcher.find()) {
             String opSymbol = matcher.group(1);
@@ -32,7 +35,7 @@ public class ParsingContext {
     }
 
     public ParsingContext extractDelimiter(){
-        Matcher matcher = delimiterPattern.matcher(remainText);
+        Matcher matcher = DELIMITER_PATTERN.matcher(remainText);
 
         if(matcher.find()) {
             this.delimiter = matcher.group(1);
