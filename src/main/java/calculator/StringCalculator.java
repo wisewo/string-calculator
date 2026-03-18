@@ -9,16 +9,22 @@ import java.util.List;
  */
 public class StringCalculator {
 
-    CalculationHistory history = new CalculationHistory();
+    private CalculationHistory history = new CalculationHistory();
+    private InputParser inputParser = new InputParser();
 
     public double calculate(String input) {
-        InputParser inputParser = new InputParser();
-        Formula formula = inputParser.parse(input);
-        double result =  formula.calculate().value();
 
+        // 1. 파싱
+        Formula formula = inputParser.parse(input);
+
+        // 2. 계산
+        Operand result =  formula.calculate();
+
+        // 3. 이력 저장
         history.add(input);
 
-        return result;
+        // 4. 결과 반환
+        return result.value();
     }
 
     public List<String> getHistory() {

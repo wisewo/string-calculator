@@ -9,13 +9,10 @@ public record Formula(
 ) {
 
     public Operand calculate() {
-        Operand result = operands.get(0);
 
-        for(int i = 1; i < operands.size(); ++i) {
-            result = operator.operate(result, operands.get(i));
-        }
-
-        return result;
+        return operands.stream()
+                .reduce(operator::operate)
+                .orElse(new Operand(0.0));
     }
 
     @Override
